@@ -19,6 +19,6 @@
     "lint-staged": "^16.4.0"
   },
   "lint-staged": {
-    "**/*.{ts,tsx}": ["eslint --fix", "prettier --write"]
+    "**/*.{ts,tsx}": ["eslint --flag unstable_config_lookup_from_file --fix", "prettier --write"]
   }
 }
