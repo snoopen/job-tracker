@@ -1,0 +1,12 @@
+# Dependencies
+node_modules
+
+# Local env files
+.env*
+!.env.example
+
+# Build Outputs
+dist
+
+# Temp files
+.tmp
