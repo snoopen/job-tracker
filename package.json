@@ -10,9 +10,15 @@
   "author": "Scott Picton",
   "license": "MIT",
   "scripts": {
-    "lint": "npm run lint --workspaces --if-present"
+    "lint": "npm run lint --workspaces --if-present",
+    "prepare": "husky"
   },
   "devDependencies": {
-    "eslint-config-prettier": "^10.1.8"
+    "eslint-config-prettier": "^10.1.8",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0"
+  },
+  "lint-staged": {
+    "**/*.{ts,tsx}": ["eslint --fix", "prettier --write"]
   }
 }
