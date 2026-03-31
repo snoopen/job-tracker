@@ -2,8 +2,17 @@
   "name": "job-tracker",
   "version": "1.0.0",
   "description": "A personal job application tracking tool",
-  "workspaces": ["apps/*", "packages/*"],
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "keywords": [],
   "author": "Scott Picton",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "lint": "npm run lint --workspaces --if-present"
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^10.1.8"
+  }
 }
