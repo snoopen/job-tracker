@@ -19,6 +19,10 @@
     "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": false,
-    "verbatimModuleSyntax": false
+    "verbatimModuleSyntax": false,
+    "types": [
+      "jest",
+      "node"
+    ]
   }
 }
