@@ -44,22 +44,29 @@ describe('JobsService', () => {
 
   describe('findAll', () => {
     it('returns paginated results for the given userId', async () => {
-      const jobs = [mockJob, { ...mockJob, _id: 'other-id' }];
+      // const jobs = [mockJob, { ...mockJob, _id: 'other-id' }];
+      const allJobs = Array.from({ length: 25 }, (_, i) => ({
+        ...mockJob,
+        _id: `id-${i}`,
+      }));
+      const page2jobs = allJobs.slice(10, 20);
+
       mockJobModel.find.mockReturnValue({
         skip: jest.fn().mockReturnValue({
           limit: jest.fn().mockReturnValue({
-            exec: jest.fn().mockResolvedValue(jobs),
+            exec: jest.fn().mockResolvedValue(page2jobs),
           }),
         }),
       });
-      mockJobModel.countDocuments.mockResolvedValue(2);
+      mockJobModel.countDocuments.mockResolvedValue(25);
 
-      const result = await service.findAll(mockUserId, { page: 1, limit: 10 });
+      const result = await service.findAll(mockUserId, { page: 2, limit: 10 });
 
-      expect(result.data).toEqual(jobs);
-      expect(result.total).toBe(2);
-      expect(result.page).toBe(1);
-      expect(result.totalPages).toBe(1);
+      expect(result.data).toHaveLength(10);
+      expect(result.data).toEqual(page2jobs);
+      expect(result.total).toBe(25);
+      expect(result.page).toBe(2);
+      expect(result.totalPages).toBe(3);
       expect(mockJobModel.find).toHaveBeenCalledWith({ userId: mockUserId });
     });
   });
