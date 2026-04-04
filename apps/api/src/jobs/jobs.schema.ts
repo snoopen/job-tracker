@@ -36,7 +36,7 @@ export class Job {
   @Prop()
   url?: string;
 
-  @Prop({ required: true })
+  @Prop({ required: true, type: String, enum: ApplicationStatus })
   status!: ApplicationStatus;
 
   @Prop({ type: [String], default: [] })
